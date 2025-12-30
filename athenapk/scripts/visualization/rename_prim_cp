@@ -1,0 +1,7 @@
+# for file in parthenon.prim.*.phdf; do
+#	mv "$file" "$(sed 's/parthenon.prim./mixing_nocool_/' <<< "$file")"
+# done
+
+for file in mixing_nocool_restart*.rhdf; do
+	mv "$file" "$(sed 's/mixing_nocool_restart/mixing_nocool_restart_/' <<< "$file")"
+done

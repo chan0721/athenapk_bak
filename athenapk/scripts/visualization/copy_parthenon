@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Set source and destination directories
+SOURCE_DIR="simulation_nocool"
+DEST_DIR="simulation_coolstrong"
+
+
+# Copy the first 200 parthenon.prim files
+for i in $(seq 0 120); do
+    file="parthenon.prim.$(printf "%05d" $i).phdf"
+    if [ -f "$SOURCE_DIR/$file" ]; then
+        cp "$SOURCE_DIR/$file" "$DEST_DIR/"
+    else
+        echo "File $file not found, skipping..."
+    fi
+done
+
+for i in $(seq 0 11); do
+	file="parthenon.restart.$(printf "%05d" $i).rhdf"
+	if [ -f "$SOURCE_DIR/$file" ]; then
+		cp "$SOURCE_DIR/$file" "$DEST_DIR/"
+	else
+		echo "File $file not found, skipping..."
+	fi
+done
+
