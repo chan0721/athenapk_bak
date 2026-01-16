@@ -7,44 +7,44 @@ problem_id = turbulence
 
 <parthenon/output1>
 file_type  = hst        # History data dump
-dt         = 1.577e13       # time increment between outputs        # remember to modify this number once adjusting the gamma value to match the running dt.
+dt         = 1.577e12       # time increment between outputs        # remember to modify this number once adjusting the gamma value to match the running dt.
 
 <parthenon/output2>
 file_type  = hdf5       # Binary data dump
 variables   = prim,acc   # variables to be output
-dt         = 7.855e13        # time increment between outputs
+dt         = 7.855e12        # time increment between outputs
 id         = prim
 
 
 <parthenon/output3>
 file_type  = rst        # Binary data dump
-dt         = 7.855e14        # time increment between outputs
+dt         = 7.855e13        # time increment between outputs
 id         = restart
 
 <parthenon/time>
 cfl = 0.3               # The Courant, Friedrichs, & Lewy (CFL) Number
 nlim       = 90000     # cycle limit
-tlim       = 1.577e40        # time limit
+tlim       = 1.577e20        # time limit
 integrator  = vl2       # time integration algorithm
 ncycle_out_mesh = -500  # print mesh structure every 500 cyles and on refinement
 
 <parthenon/mesh>
-nghost     = 2
-nx1        = 32         # Number of zones in X1-direction
+nghost     = 4
+nx1        = 256         # Number of zones in X1-direction
 x1min      = 0.0        # minimum value of X1
-x1max      = 3.086e32        # maximum value of X1
+x1max      = 3.086e20        # maximum value of X1
 ix1_bc     = periodic   # inner-X1 boundary flag
 ox1_bc     = periodic   # outer-X1 boundary flag
 
-nx2        = 32         # Number of zones in X2-direction
+nx2        = 256         # Number of zones in X2-direction
 x2min      = 0.0        # minimum value of X2
-x2max      = 3.086e32        # maximum value of X2
+x2max      = 3.086e20        # maximum value of X2
 ix2_bc     = periodic   # inner-X2 boundary flag
 ox2_bc     = periodic   # outer-X2 boundary flag
 
-nx3        = 32         # Number of zones in X3-direction
+nx3        = 256         # Number of zones in X3-direction
 x3min      = 0.0        # minimum value of X3
-x3max      = 3.086e32        # maximum value of X3
+x3max      = 3.086e20        # maximum value of X3
 ix3_bc     = periodic   # inner-X3 boundary flag
 ox3_bc     = periodic   # outer-X3 boundary flag
 
@@ -52,9 +52,9 @@ pack_size = -1          # pack all blocks in a single pack (currently required)
 
 
 <parthenon/meshblock>
-nx1        = 16
-nx2        = 16
-nx3        = 16
+nx1        = 256
+nx2        = 256
+nx3        = 256
 
 
 <hydro>
@@ -67,7 +67,6 @@ Tfloor = 100
 dfloor = 1e-35
 pfloor = 1e-20
 He_mass_fraction = 0
-nhydro = 5
 nscalars = 1
 
 
@@ -79,7 +78,7 @@ code_mass_cgs = 1
 
 <problem/turbulence>
 rho0         = 1.0e-26
-p0           = 1.65e-11 
+p0           = 1.65e-12 
 b0           = 1.0e-30
 b_config     = 0             # 0 - net flux; 1 - no net flux uniform B; 2 - non net flux sin B; 4 - field loop
 kpeak        = 2.0           # characteristic wavenumber (dimensionless)
@@ -91,7 +90,7 @@ num_modes    = 30            # number of wavemodes (dimensionless)
 
 
 <cooling>
-enable_cooling = tabular
+enable_cooling = none
 table_filename = /root/athenapk_bak/athenapk/inputs/cooling_tables/gnat-sternberg.cooling_0.1Z
 lambda_units_cgs = 1
 cfl = 0.3
@@ -101,7 +100,13 @@ d_log_temp_tol = 0.5
 d_e_tol = 0.5
 
 
+<blob_injection>
+inject_once_at_cycle = 45000
+inject_n_blobs = 1
 
+inject_blob_radius_0 = 5.000e19
+inject_blob_loc_0 = 1.5043e20, 1.5043e20, 1.5043e20
+inject_blob_chi_0 = 10.00
 
 
 

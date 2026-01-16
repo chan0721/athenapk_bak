@@ -78,19 +78,19 @@ num_modes    = 30            # number of wavemodes (dimensionless)
 
 
 <parthenon/cooling>
-enable_cooling = tabular
-table_filename = simple.cooling
+enable_cooling = none
+table_filename = /root/athenapk_bak/athenapk/inputs/cooling_tables/gnat-sternberg.cooling_0.1Z
 lambda_units_cgs = 1
 log_temp_col = 0
 log_lambda_col = 1
 cfl = 0.3
-integrator = rkl2
+integrator = townsend
 max_iter = 100 
-d_log_temp_tol = 1e-8
-d_e_tol = 1e-5
+d_log_temp_tol = 0.5
+d_e_tol = 0.5
 
 <blob_injection>
-inject_once_at_cycle = 50001
+inject_once_at_cycle = 50000
 inject_n_blobs = 1
 
 inject_blob_radius_0 = 5.000e19
